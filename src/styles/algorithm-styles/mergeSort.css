@@ -1,0 +1,33 @@
+.merge-sort-wrapper {
+    background-color: rgb(182, 182, 182);
+    padding-top: 20px;
+    height: calc(100% - 20px);
+    width: 100%;
+}
+
+.array-container {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: aqua;
+    height: 600px;
+    width: 80%;
+    margin: 50px auto auto auto;
+}
+
+.array-bar {
+    width: 30px;
+    background-color: yellow;
+    margin: 0px 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.array-bar > span {
+    position: relative;
+    top: 20px;
+}
