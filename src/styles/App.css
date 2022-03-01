@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 .App {
   text-align: center;
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -41,6 +43,11 @@
   }
 }
 
+footer > a {
+  color: white;
+  text-decoration: none;
+}
+
 /* -------------------------------------------------------- */
 
 .algorithm-display {
@@ -69,18 +76,13 @@
   user-select: none;
 }
 
-#menuToggle button
-{
-  text-align: start;
-  padding-left: 20px;
-  text-decoration: none;
-  color: #232323;
-  transition: color 0.3s ease;
-}
-
-#menuToggle button:hover
-{
-  color: tomato;
+#menu > h2 {
+  position: absolute;
+  top: 52px;
+  left: 90px;
+  color: white;
+  font-family: 'Major Mono Display', monospace;
+  font-size:larger;
 }
 
 #menuToggle input
@@ -162,8 +164,7 @@
  * Make this absolute positioned
  * at the top left of the screen
  */
-#menu
-{
+#menu {
   position: absolute;
   width: 300px;
   height: 100%;
@@ -174,7 +175,7 @@
   display: flex;
   flex-direction: column;
   
-  background: rgb(100, 100, 100);;
+  background: rgb(70, 70, 70);
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -185,23 +186,109 @@
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-#menu li
-{
-  padding: 10px 0;
-  font-size: 22px;
+#menu .algo-name {
+  color: white;
+  margin-left: 0px;
+}
+
+.algo-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.algo-group > p {
+  position: relative;
+  right: 30px;
+  margin: 20px auto 20px -60px;
 }
 
 /*
  * And let's slide it in from the left
  */
-#menuToggle input:checked ~ ul
+#menuToggle input:checked ~ div
 {
   transform: none;
 }
 
-.algo-buttons-container {
-  height: 0;
+
+/* ------------------------------ */
+.home-screen {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  transition: height 0.5s ease-in-out;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+.home-screen > h1{
+  font-family: 'Major Mono Display', monospace;
+  font-size: 50px;
+}
+
+.main-footer {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.horizontal-line {
+  height: 1px;
+  width: calc(100% + 100px);
+  /* margin: -50px auto -50px auto;  */
+  background-color: rgb(200, 200, 200);
+}
+
+
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #111;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-15 {
+  width: calc(100% + 100px);
+  background: #111;
+  color: white;
+  z-index: 1;
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background: #aaa;
+  transition: all 0.3s ease;
+}
+.btn-15:hover {
+ color: #111;
+}
+.btn-15:hover:after {
+ left: 0;
+ width: 100%;
+}
+.btn-15:active {
+ top: 2px;
 }

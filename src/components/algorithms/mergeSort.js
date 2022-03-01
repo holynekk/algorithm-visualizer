@@ -1,6 +1,6 @@
 import '../../styles/algorithm-styles/mergeSort.css';
 
-const ANIMATION_SPEED_MS = 10;
+let ANIMATION_SPEED_MS = 10;
 const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 let numberArray = [];
@@ -59,7 +59,7 @@ function doMerge(
       animations.push([k, auxiliaryArray[j]]);
       mainArray[k++] = auxiliaryArray[j++];
     }
-  }
+}
 
 function mergeSortHelper(
     mainArray,
@@ -69,11 +69,11 @@ function mergeSortHelper(
     animations,
   ) {
     if (startIdx === endIdx) return;
-    const middleIdx = Math.floor((startIdx + endIdx) / 2);
-    mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
-    mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
-    doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
-  }
+		const middleIdx = Math.floor((startIdx + endIdx) / 2);
+		mergeSortHelper(auxiliaryArray, startIdx, middleIdx, mainArray, animations);
+		mergeSortHelper(auxiliaryArray, middleIdx + 1, endIdx, mainArray, animations);
+		doMerge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animations);
+}
 
 function getMergeSortAnimations() {
     const animations = [];
@@ -81,7 +81,11 @@ function getMergeSortAnimations() {
     const auxiliaryArray = numberArray.slice();
     mergeSortHelper(numberArray, 0, numberArray.length - 1, auxiliaryArray, animations);
     return animations;
-  }
+}
+
+function handleAnimationSpeed(e) {
+	ANIMATION_SPEED_MS = e.target.value;
+}
 
 function startSorting() {
     const animations = getMergeSortAnimations();
@@ -113,12 +117,25 @@ function MergeSort() {
     for (let i = 0; i < 20; i++) {
         numberArray.push(Math.floor(Math.random() * 50 + 1));
     }
-    console.log(numberArray.length);
 
     return (
         <div className='merge-sort-wrapper'>
             <h2>Merge Sort</h2>
-            <button onClick={startSorting}>Play</button>
+            <div className='settings-section'>
+				<div className='animation-speed-slider'>
+					<input
+						id="anim-speed"
+						type="range" 
+						min="1" max="250" 
+						value="10" 
+						step="1"
+						onChange={handleAnimationSpeed}
+						/>
+					<label for="anim-speed">Animation Speed</label>
+				</div>
+				
+				<button onClick={startSorting}>Play</button>
+            </div>
             <div className="array-container">
                 {
                     numberArray.map((value, idx) => (
@@ -130,7 +147,6 @@ function MergeSort() {
                             }}
                             value={value}
                         >
-                            <span>{value}</span>
                         </div>
                     ))
                 }

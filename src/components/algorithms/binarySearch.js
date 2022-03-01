@@ -49,7 +49,6 @@ function BinarySearch() {
 
 function animate() {
     let domArray = document.getElementsByClassName('array-bar');
-    // console.log(domArray.length);
     for(let k = 0; k < domArray.length; k++) {
         domArray[k].style.background = "blue";
     }
@@ -70,8 +69,6 @@ function animate() {
 
 function startBinarySearchAnimation() {
     let left = 0, right = numbers.length-1, mid;
-    console.log("Numbers: " + numbers);
-    console.log("Target: " + target);
     while(left <= right) {
         mid = parseInt((left+right)/2);
         animArray.push(left);
