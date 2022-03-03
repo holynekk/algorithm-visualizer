@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import '../styles/App.css';
-import BinarySearch from './algorithms/binarySearch';
-import MergeSort from './algorithms/mergeSort';
+import BinarySearch from './algorithms/branchAndBound/binarySearch';
+import MergeSort from './algorithms/divideAndConquer/mergeSort';
 import InsertionSort from './algorithms/bruteForce/insertionSort';
 import DijkstraShortest from './algorithms/greedy/dijkstraShortest';
+import '../styles/App.css';
 
 function renderSwitch(param) {
 	switch(param) {
@@ -44,8 +44,14 @@ function App() {
 					<div className='algo-group'>
 						<p className='algo-name'> Branch and Bound </p>
 						<div className='horizontal-line'> a</div>
-						<button className='custom-btn btn-15'>*</button>
-						<button className='custom-btn btn-15'>*</button>
+						<button 
+							className='custom-btn btn-15' 
+							onClick={()=>{
+								setAlgoType('binarySearch');
+							}}
+						>
+							Binary Search
+						</button>
 					</div>
 					<div className='algo-group'>
 						<p className='algo-name'> Brute Force </p>

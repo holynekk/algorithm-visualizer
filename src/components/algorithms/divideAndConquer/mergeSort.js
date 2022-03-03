@@ -1,4 +1,4 @@
-import '../../styles/algorithm-styles/mergeSort.css';
+// import '../../styles/algorithm-styles/divideAndConquer/mergeSort.css';
 
 let ANIMATION_SPEED_MS = 10;
 const PRIMARY_COLOR = 'turquoise';
