@@ -303,6 +303,7 @@ footer > a {
 .array-bar {
   width: 30px;
   background-color: #555;
+  color: #ddd;
   margin: 0px 2px;
   display: flex;
   flex-direction: row;

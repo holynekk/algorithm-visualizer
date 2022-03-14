@@ -1,58 +1,87 @@
 import '../../../styles/algorithm-styles/bruteForce/insertionSort.css';
 
 let ANIMATION_SPEED_MS = 10;
-const PRIMARY_COLOR = 'turquoise';
-const SECONDARY_COLOR = 'red';
+const PRIMARY_COLOR = '#2962ff';
+const SECONDARY_COLOR = "#555";
 let numberArray = [];
-
-
-
-function handleAnimationSpeed(e) {
-	ANIMATION_SPEED_MS = e.target.value;
-	console.log(ANIMATION_SPEED_MS);
-}
-
-function startSorting() {
-    let arrayBars = document.getElementsByClassName('array-bar');
-    console.log(arrayBars);
-    for(let i = 1; i < numberArray.length; i++) {
-        let key = numberArray[i];
-        let keyDOM = arrayBars[i].style.height;
-        let j = i-1;
-        while (j >= 0 && numberArray[j] > key) {
-            numberArray[j+1] = numberArray[j];
-            arrayBars[j+1].style.height = arrayBars[j].style.height;
-            setTimeout(function(){ arrayBars[j].style.background = 'red'; }, 500);
-            j--;
-        }
-        numberArray[j+1] = key;
-        arrayBars[j+1].style.height = keyDOM;
-    }
-}
 
 function InsertionSort() {
 
-    for (let i = 0; i < 20; i++) {
-        numberArray.push(Math.floor(Math.random() * 50 + 1));
+    for (let i = 0; i < 30; i++) {
+        if (numberArray.length < 30) numberArray.push(Math.floor(Math.random() * 50 + 1));
     }
 
+    function getInsertionSortAnimations() {
+        const animations = [];
+        const auxiliaryArray = numberArray.slice();
+
+        for(let i = 1; i < auxiliaryArray.length; i++) {
+            let key = auxiliaryArray[i];
+            let j = i - 1;
+            while (j >= 0 && auxiliaryArray[j] > key) {
+                const temp = auxiliaryArray[j];
+                auxiliaryArray[j] = auxiliaryArray[j+1];
+                auxiliaryArray[j+1] = temp;
+                animations.push([0, j, j+1]);
+                j--;
+            }
+            animations.push([1, j+1, key]);
+        }
+
+        return animations;
+    }
+
+    function startInsertionSort() {
+        const animations = getInsertionSortAnimations();
+        console.log(animations);
+        let k = 0;
+        animations.forEach((animation)=>{
+            const domArray = document.getElementsByClassName("array-bar");
+            if (animation[0] === 0) {
+                setTimeout(()=>{
+                    domArray[animation[1]].style.background = PRIMARY_COLOR;
+                    domArray[animation[2]].style.background = PRIMARY_COLOR;
+                }, k++ * ANIMATION_SPEED_MS);
+                setTimeout(()=>{
+                    domArray[animation[1]].style.background = SECONDARY_COLOR;
+                    domArray[animation[2]].style.background = SECONDARY_COLOR;
+                }, k++ * ANIMATION_SPEED_MS);
+                setTimeout(()=>{
+                    let temp = domArray[animation[1]].style.height;
+                    domArray[animation[1]].style.height = domArray[animation[2]].style.height;
+                    domArray[animation[2]].style.height = temp;
+                }, k++ * ANIMATION_SPEED_MS);
+            } else {
+                setTimeout(()=>{
+                    domArray[animation[1]].style.height = toString(animation[2]*10)+"px";
+                    console.log(domArray[animation[1]].style.height);
+                }, k++ * ANIMATION_SPEED_MS);
+            }
+        });
+    }
+    
     return (
-        <div className='insetion-sort-wrapper'>
-            <h2>Merge Sort</h2>
-            <div className='settings-section'>
-				<div className='animation-speed-slider'>
-					<input
-						id="anim-speed"
-						type="range" 
-						min="1" max="250" 
-						value="10" 
-						step="1"
-						onChange={handleAnimationSpeed}
-						/>
-					<label htmlFor='anim-speed'>Animation Speed</label>
-				</div>
-				
-				<button onClick={startSorting}>Play</button>
+        <div className='array-algo-wrapper'>
+            <div className='info-section'>
+                <div className='info-divs'>
+                    <div className='bumbum'>
+                        <div id="start-node" className='info-node' />
+                        <p className='node-tag'>Search Range</p>
+                    </div>
+                    <div className='bumbum'>
+                        <div id="finish-node" className='info-node' />
+                        <p className='node-tag'>Found Target</p>
+                    </div>
+                </div>
+                <div className='info-text'>
+                    Insertion Sort algorithm
+                </div>
+                <button
+                    className='button-81'
+                    onClick={startInsertionSort}
+                >
+                    Play
+                </button>
             </div>
             <div className="array-container">
                 {
@@ -63,15 +92,13 @@ function InsertionSort() {
                             style={{
                                 height: `${10*value}px`
                             }}
-                            value={value}
-                        >
-                        </div>
+                        />
                     ))
                 }
             </div>
         </div>
     );
+    
 }
-
 
 export default InsertionSort;

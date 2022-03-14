@@ -88,7 +88,7 @@ export default class BinarySearch extends Component {
                     <div className='info-text'>
                         Used binary search algorithm. Everytime the searching space is divided by to and search is done at the remaining half.
                         This way required time noticeably decreased.
-                        <p className='target-number'>Target: {this.state.target}</p>
+                        <p className='target-number'>Target: {this.state.target} {"->"} The number we are searching for</p>
                     </div>
                     <button
                         className='button-81'
