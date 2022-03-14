@@ -1,8 +1,8 @@
 // import '../../styles/algorithm-styles/divideAndConquer/mergeSort.css';
 
 let ANIMATION_SPEED_MS = 10;
-const PRIMARY_COLOR = 'turquoise';
-const SECONDARY_COLOR = 'red';
+const SECONDARY_COLOR = '#2962ff';
+const PRIMARY_COLOR = '#555';
 let numberArray = [];
 
 function doMerge(
@@ -17,45 +17,25 @@ function doMerge(
 	let i = startIdx;
 	let j = middleIdx + 1;
 	while (i <= middleIdx && j <= endIdx) {
-		// These are the values that we're comparing; we push them once
-		// to change their color.
 		animations.push([i, j]);
-		// These are the values that we're comparing; we push them a second
-		// time to revert their color.
 		animations.push([i, j]);
 		if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-			// We overwrite the value at index k in the original array with the
-			// value at index i in the auxiliary array.
 			animations.push([k, auxiliaryArray[i]]);
 			mainArray[k++] = auxiliaryArray[i++];
 		} else {
-			// We overwrite the value at index k in the original array with the
-			// value at index j in the auxiliary array.
 			animations.push([k, auxiliaryArray[j]]);
 			mainArray[k++] = auxiliaryArray[j++];
 		}
 	}
 	while (i <= middleIdx) {
-		// These are the values that we're comparing; we push them once
-		// to change their color.
 		animations.push([i, i]);
-		// These are the values that we're comparing; we push them a second
-		// time to revert their color.
 		animations.push([i, i]);
-		// We overwrite the value at index k in the original array with the
-		// value at index i in the auxiliary array.
 		animations.push([k, auxiliaryArray[i]]);
 		mainArray[k++] = auxiliaryArray[i++];
 	}
 	while (j <= endIdx) {
-		// These are the values that we're comparing; we push them once
-		// to change their color.
 		animations.push([j, j]);
-		// These are the values that we're comparing; we push them a second
-		// time to revert their color.
 		animations.push([j, j]);
-		// We overwrite the value at index k in the original array with the
-		// value at index j in the auxiliary array.
 		animations.push([k, auxiliaryArray[j]]);
 		mainArray[k++] = auxiliaryArray[j++];
 	}
@@ -117,41 +97,39 @@ function MergeSort() {
 		if (numberArray.length < 30) numberArray.push(Math.floor(Math.random() * 50 + 1));
 	}
 
-	console.log(numberArray);
     return (
-        <div className='merge-sort-wrapper'>
-            <h2>Merge Sort</h2>
-            <div className='settings-section'>
-				<div className='animation-speed-slider'>
-					<input
-						id="anim-speed"
-						type="range" 
-						min="1" max="250" 
-						value="10" 
-						step="1"
-						onChange={handleAnimationSpeed}
-						/>
-					<label htmlFor="anim-speed">Animation Speed</label>
+		<div className='array-algo-wrapper'>
+			<div className='info-section'>
+				<div className='info-divs'>
+					<div className='bumbum'>
+						<div id="start-node" className='info-node' />
+						<p className='node-tag'>Array numbers being compared</p>
+					</div>
 				</div>
-				
-				<button onClick={startSorting}>Play</button>
-            </div>
-            <div className="array-container">
-                {
-                    numberArray.map((value, idx) => (
-                        <div
-                            className='array-bar'
-                            key={idx}
-                            style={{
-                                height: `${10*value}px`
-                            }}
-                            value={value}
-                        >
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+				<div className='info-text'>
+					Merge Sort Algorithm
+				</div>
+				<button
+					className='button-81'
+					onClick={startSorting}
+				>
+					Play
+				</button>
+			</div>
+			<div className="array-container">
+				{
+					numberArray.map((value, idx) => (
+						<div
+							className='array-bar'
+							key={idx}
+							style={{
+								height: `${10*value}px`
+							}}
+						/>
+					))
+				}
+			</div>
+		</div>
     );
 }
 

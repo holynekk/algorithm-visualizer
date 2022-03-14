@@ -66,15 +66,11 @@ function InsertionSort() {
                 <div className='info-divs'>
                     <div className='bumbum'>
                         <div id="start-node" className='info-node' />
-                        <p className='node-tag'>Search Range</p>
-                    </div>
-                    <div className='bumbum'>
-                        <div id="finish-node" className='info-node' />
-                        <p className='node-tag'>Found Target</p>
+                        <p className='node-tag'>Array numbers being compared</p>
                     </div>
                 </div>
                 <div className='info-text'>
-                    Insertion Sort algorithm
+                    Insertion Sort Algorithm
                 </div>
                 <button
                     className='button-81'
