@@ -2,11 +2,14 @@ import { useState } from 'react';
 import BinarySearch from './algorithms/branchAndBound/binarySearch';
 import MergeSort from './algorithms/divideAndConquer/mergeSort';
 import InsertionSort from './algorithms/bruteForce/insertionSort';
+import BubbleSort from './algorithms/bruteForce/bubbleSort';
 import DijkstraShortest from './algorithms/greedy/dijkstraShortest';
 import '../styles/App.css';
 
 function renderSwitch(param) {
 	switch(param) {
+		case 'bubbleSort':
+			return <BubbleSort />
 		case 'binarySearch':
 			return <BinarySearch />;
 		case 'mergeSort':
@@ -63,6 +66,14 @@ function App() {
 							}}
 						>
 							Insertion Sort
+						</button>
+						<button 
+							className='custom-btn btn-15' 
+							onClick={()=>{
+								setAlgoType('bubbleSort');
+							}}
+						>
+							Bubble Sort
 						</button>
 					</div>
 					<div className='algo-group'>
