@@ -3,6 +3,7 @@ import BinarySearch from './algorithms/branchAndBound/binarySearch';
 import MergeSort from './algorithms/divideAndConquer/mergeSort';
 import InsertionSort from './algorithms/bruteForce/insertionSort';
 import BubbleSort from './algorithms/bruteForce/bubbleSort';
+import HeapSort from './algorithms/bruteForce/heapSort';
 import DijkstraShortest from './algorithms/greedy/dijkstraShortest';
 import NthFactorial from './algorithms/recursive/nthFactorial';
 import FibonacciSeries from './algorithms/dynamicProgramming/fibonacciSequence';
@@ -10,6 +11,8 @@ import '../styles/App.css';
 
 function renderSwitch(param) {
 	switch(param) {
+		case 'heapSort':
+			return <HeapSort />
 		case 'fibonacciSeries':
 			return <FibonacciSeries />
 		case 'nth-factorial':
@@ -80,6 +83,14 @@ function App() {
 							}}
 						>
 							Bubble Sort
+						</button>
+						<button 
+							className='custom-btn btn-15' 
+							onClick={()=>{
+								setAlgoType('heapSort');
+							}}
+						>
+							Heap Sort
 						</button>
 					</div>
 					<div className='algo-group'>

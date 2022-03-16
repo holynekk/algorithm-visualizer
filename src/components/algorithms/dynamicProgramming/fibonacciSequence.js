@@ -1,7 +1,7 @@
 
 const PRIMARY_COLOR = '#2962ff';
 const SECONDARY_COLOR = '#c51162';
-const ANIMATION_SPEED = 10;
+const ANIMATION_SPEED = 1000;
 
 let numberArray = []
 let labelArray = []
