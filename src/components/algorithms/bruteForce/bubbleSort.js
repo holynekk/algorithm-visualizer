@@ -64,7 +64,7 @@ function BubbleSort() {
     }
     
     return (
-        <div className='array-algo-wrapper'>
+        <div className='algo-wrapper'>
             <div className='info-section'>
                 <div className='info-divs'>
                     <div className='bumbum'>

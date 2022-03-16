@@ -4,10 +4,13 @@ import MergeSort from './algorithms/divideAndConquer/mergeSort';
 import InsertionSort from './algorithms/bruteForce/insertionSort';
 import BubbleSort from './algorithms/bruteForce/bubbleSort';
 import DijkstraShortest from './algorithms/greedy/dijkstraShortest';
+import NthFactorial from './algorithms/recursive/nthFactorial';
 import '../styles/App.css';
 
 function renderSwitch(param) {
 	switch(param) {
+		case 'nth-factorial':
+			return <NthFactorial />
 		case 'bubbleSort':
 			return <BubbleSort />
 		case 'binarySearch':
@@ -109,8 +112,14 @@ function App() {
 					<div className='algo-group'>
 						<p className='algo-name'> Recursive </p>
 						<div className='horizontal-line'> a</div>
-						<button className='custom-btn btn-15'>*</button>
-						<button className='custom-btn btn-15'>*</button>
+						<button 
+								className='custom-btn btn-15' 
+								onClick={()=>{
+									setAlgoType('nth-factorial');
+								}}
+							>
+								N-th Factorial
+							</button>
 					</div>
 				</div>
 			</div>
