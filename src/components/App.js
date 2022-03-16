@@ -5,10 +5,13 @@ import InsertionSort from './algorithms/bruteForce/insertionSort';
 import BubbleSort from './algorithms/bruteForce/bubbleSort';
 import DijkstraShortest from './algorithms/greedy/dijkstraShortest';
 import NthFactorial from './algorithms/recursive/nthFactorial';
+import FibonacciSeries from './algorithms/dynamicProgramming/fibonacciSequence';
 import '../styles/App.css';
 
 function renderSwitch(param) {
 	switch(param) {
+		case 'fibonacciSeries':
+			return <FibonacciSeries />
 		case 'nth-factorial':
 			return <NthFactorial />
 		case 'bubbleSort':
@@ -94,8 +97,14 @@ function App() {
 					<div className='algo-group'>
 						<p className='algo-name'> Dynamic Programming </p>
 						<div className='horizontal-line'> a</div>
-						<button className='custom-btn btn-15'>*</button>
-						<button className='custom-btn btn-15'>*</button>
+						<button 
+							className='custom-btn btn-15' 
+							onClick={()=>{
+								setAlgoType('fibonacciSeries');
+							}}
+						>
+							Fibonacci Series
+						</button>
 					</div>
 					<div className='algo-group'>
 						<p className='algo-name'> Greedy </p>
