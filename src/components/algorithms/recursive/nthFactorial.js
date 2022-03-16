@@ -26,6 +26,7 @@ function startMultiplying() {
 		}, m++ * ANIMATION_SPEED);
 		setTimeout(()=>{
 			labelDomArray[animations[i][1]].style.color = 'black';
+			numberDomArray[animations[i][0]].style.background = "#555";
 			numberDomArray[animations[i+1][0]].style.background = SECONDARY_COLOR;
 			// console.log(numberDomArray[animations[i+1][0]].textContent);
 			numberDomArray[animations[i+1][0]].textContent = parseInt(numberDomArray[animations[i][0]].textContent) * parseInt(labelDomArray[animations[i][1]].textContent);
